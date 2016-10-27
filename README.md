@@ -1,3 +1,39 @@
+#Fab Lab RFID
+
+SSEUG Fab Lab RFID access control project
+
+##Features
+
+This is an outline of the features we want to be present in the first version of the RFID access control system.
+
+* Web interface exposing admin functions
+* Audit log should be able to sort, filter and search in the Web interface
+
+### Other feature ideas
+* triggers? trigger something in another system?
+
+##Architecture
+
+Key components of the Fab Lab RFID access control system
+
+### Database Tables
+* tokens
+    * code - the code on the chip
+    * registered time - time the token was added to the system
+* users - have many keys
+    * name - name of the user
+    * created time - time the user was created
+* events - each have a user and a token
+    * time - time of the event
+    * user - reference to the user that generated the event
+    * token - reference to the user token that was used in the event
+    * location - the access point that generated the event
+
+### REST API
+* REST API for readers to POST to for authentication. Authentication endpoint should return `denied` or `granted` based on the token.
+
+### Web Interface
+* Web interface for administration
 
 ## About RFID
 RFID access control system.
